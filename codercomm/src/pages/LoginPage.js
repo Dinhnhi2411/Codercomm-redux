@@ -44,7 +44,7 @@ function LoginPage() {
   const [ showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async(data) => {
-    const from = location.state?.from.pathname || "/";
+    const from = location.state?.from?.pathname || "/";
     let { email, password } =  data;
 
     try {

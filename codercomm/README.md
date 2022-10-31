@@ -18,3 +18,32 @@ Part-3 : Layouts and Routes
   -/login:LoginPage
   -/register:RegisterPage
   -/\*:NotFoundPage
+
+Part-4: Authentication
+
+- AuthProvider = AuthContext + useReducer
+- useAuth
+- LoginPage = RHF + auth.login
+- AuthRequire -> Navigate to Login if not authenticated
+
+Part-5: Registration and Persistent
+
+Part-6: Main Header and Home Page
+
+- MainHeader: AppBar, Menu, Avatar
+- HomePage: ProfileCover, Tabs(Profile, FriendList, FriendQuest, AddFriend)
+- Divider & Conquer
+
+Part-7: Custom Theme
+
+Part-8: Set up Redux Store & Create Posts
+
+Part-9:
+Part-10:
+Part-11:
+Part-12:
+Part-13:
+Part-14:
+Part-15:
+Part-16:
+Part-17:

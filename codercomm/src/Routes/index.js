@@ -17,9 +17,10 @@ function Router() {
      path="/"
       element={
       <AuthRequire>
-        <MainLayout/
-        ></AuthRequire>
-      }>
+        <MainLayout/>
+      </AuthRequire>
+      }
+      >
         <Route index element={<HomePage/>}/>
         <Route path="account" element={<AccountPage/>}/>
         <Route path="user/:userId" element={<UserProfilePage/>}/>

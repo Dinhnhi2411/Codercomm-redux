@@ -78,7 +78,7 @@ function AuthProvider({ children }) {
             setSession(accessToken);
 
             const response = await apiService.get("/users/me");
-            const user = response.data;
+            const user = response.data.data;
 
             dispatch({
               type: INITIALIZE,
@@ -100,7 +100,10 @@ function AuthProvider({ children }) {
 
           dispatch({
             type: INITIALIZE,
-            payload: { isAuthenticated: false, user: null}
+            payload: { 
+            isAuthenticated: false,
+            user: null,
+          }
           });
         }
       }
@@ -111,7 +114,7 @@ function AuthProvider({ children }) {
 //    LOGIN
   const login = async ({ email, password }, callback) => {
     const response = await apiService.post("/auth/login", { email, password });
-    const { user, accessToken } = response.data;
+    const { user, accessToken } = response.data.data;
 
     setSession(accessToken);
     dispatch({
@@ -125,7 +128,7 @@ function AuthProvider({ children }) {
 //    REGISTER
   const register = async ({ name, email, password }, callback) => {
     const response = await apiService.post("/users", { name, email, password });
-    const { user, accessToken } = response.data;
+    const { user, accessToken } = response.data.data;
 
     setSession(accessToken);
     dispatch({
@@ -137,7 +140,7 @@ function AuthProvider({ children }) {
   };
 
 //   LOGOUT
-  const logout = (callback) => {
+  const logout = async (callback) => {
     setSession(null);
     dispatch({type: LOGOUT});
     callback();
@@ -146,7 +149,13 @@ function AuthProvider({ children }) {
 
         return (
         <AuthContext.Provider 
-        value={{...state, login, register, logout }}
+        value={{
+          ...state, 
+          
+          login, 
+          register, 
+          logout 
+        }}
         >
             {children}
         </AuthContext.Provider>

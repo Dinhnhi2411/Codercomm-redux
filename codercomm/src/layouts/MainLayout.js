@@ -7,7 +7,7 @@ import {Box} from '@mui/system';
 
 function MainLayout() {
   return (
-  <Stack dx={{ minHeight: "100vh" }}>
+  <Stack sx={{ minHeight: "100vh" }}>
     <MainHeader/>
     <Outlet/>
     <Box sx={{ flexGrow: 1}}/>
