@@ -38,12 +38,15 @@ Part-7: Custom Theme
 
 Part-8: Set up Redux Store & Create Posts
 
-Part-9:
-Part-10:
-Part-11:
-Part-12:
+Part-9: PostList with pagination
+
+Part-10: PostCard and Comments
+
+Part-11: CommentReaction
+
+Part-12: Add friend
+
 Part-13:
 Part-14:
 Part-15:
 Part-16:
-Part-17:

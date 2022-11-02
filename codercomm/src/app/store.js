@@ -4,12 +4,12 @@ import friendReducer from "../features/friend/friendSlice";
 import postReducer from "../features/post/postSlice";
 import userReducer from "../features/user/userSlice";
 
-const rootReducer = {
+const rootReducer = combineReducers({
     comment: commentReducer,
     post: postReducer,
     user: userReducer,
     friend: friendReducer,
-};
+});
 
 const store = configureStore({
     reducer: rootReducer

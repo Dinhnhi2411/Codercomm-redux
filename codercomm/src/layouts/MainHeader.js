@@ -40,7 +40,6 @@ function MainHeader() {
   };
 
   const menuId = "primary-search-account-menu";
-
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -65,7 +64,7 @@ function MainHeader() {
           {user?.email}
         </Typography>
       </Box>
-     
+
       <Divider sx={{ borderStyle: "dashed" }} />
 
       <MenuItem
