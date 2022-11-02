@@ -46,7 +46,9 @@ Part-11: CommentReaction
 
 Part-12: Add friend
 
-Part-13:
-Part-14:
+Part-13: React Toastify, FriendList and Friend Request List
+
+Part-14: User Profile Page
+
 Part-15:
 Part-16:

@@ -79,7 +79,8 @@ export const createPost = ({ content, image }) =>
         toast.success("Post successfully");
     } catch(error) {
         dispatch(slice.actions.hasError(error.message));
-    }
+        toast.error(error.message);
+      }
 
 }
 
@@ -117,7 +118,7 @@ export const sendPostReaction =
       );
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-    
+      toast.error(error.message);
     }
   };
 export default slice.reducer
