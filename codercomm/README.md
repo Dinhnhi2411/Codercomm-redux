@@ -50,5 +50,6 @@ Part-13: React Toastify, FriendList and Friend Request List
 
 Part-14: User Profile Page
 
-Part-15:
-Part-16:
+Part-15: Update User Profile
+
+Part-16: Uploading Images

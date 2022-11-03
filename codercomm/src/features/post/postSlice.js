@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import apiService from "../../app/apiService";
 import { toast } from "react-toastify";
 import { POSTS_PER_PAGE } from "../../app/config";
+import { cloudinaryUpload } from "../../utils/cloudinary";
 
 
 const initialState = {
@@ -26,12 +27,6 @@ const slice = createSlice({
             state.error = action.payload;
           },
 
-        //   
-        // resetPosts(state, action) {
-        //     state.postsById = {};
-        //     state.currentPagePosts = [];
-        //   },
-        // 
         createPostSuccess(state, action) {
             state.isLoading = false;
             state.error = null;
@@ -40,8 +35,6 @@ const slice = createSlice({
         state.currentPagePosts.pop();
             state.postsById[newPost._id] = newPost;
             state.currentPagePosts.unshift(newPost._id);
-            
-          
           },
         //  
         getPostsSuccess(state, action) {
@@ -64,6 +57,11 @@ const slice = createSlice({
             const { postId, reactions } = action.payload;
             state.postsById[postId].reactions = reactions;
         },
+        resetPosts(state, action) {
+          state.postsById = {};
+          state.currentPagePosts = [];
+        },
+    
     },
 });
 
@@ -71,9 +69,11 @@ export const createPost = ({ content, image }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-        const response = await apiService.post("/posts", {
+      //  upload image to cloudinary
+      const imageUrl = await cloudinaryUpload(image);
+      const response = await apiService.post("/posts", {
             content,
-            image,
+            image: imageUrl,
         });
         dispatch(slice.actions.createPostSuccess(response.data.data));
         toast.success("Post successfully");
@@ -92,7 +92,7 @@ async (dispatch) => {
         const response = await apiService.get(`/posts/user/${userId}`, {
           params,
         });
-        // if (page === 1) dispatch(slice.actions.resetPosts());
+        if (page === 1) dispatch(slice.actions.resetPosts());
         dispatch(slice.actions.getPostsSuccess(response.data.data));
       } catch (error) {
         dispatch(slice.actions.hasError(error.message));
