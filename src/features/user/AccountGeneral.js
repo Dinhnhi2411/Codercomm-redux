@@ -27,7 +27,7 @@ function AccountGeneral() {
     email: user?.email || "",
     jobTitle: user?.jobTitle || "",
     company: user?.company || "",
-    // avatarUrl: user?.avatarUrl || "",
+    avatarUrl: user?.avatarUrl || "",
     coverUrl: user?.coverUrl || "",
     phoneNumber: user?.phoneNumber || "",
     address: user?.address || "",

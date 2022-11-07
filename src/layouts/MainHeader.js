@@ -42,10 +42,12 @@ function MainHeader() {
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
+    
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: "bottom",
         horizontal: "right",
+       
       }}
       id={menuId}
       keepMounted
@@ -55,8 +57,9 @@ function MainHeader() {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+     
     >
-      <Box sx={{ my: 1.5, px: 2.5 }}>
+      <Box sx={{ my: 1.5, px: 3 , color:"brown" }}>
         <Typography variant="subtitle2" noWrap>
           {user?.name}
         </Typography>
@@ -71,7 +74,7 @@ function MainHeader() {
         onClick={handleMenuClose}
         to="/"
         component={RouterLink}
-        sx={{ mx: 1 }}
+        sx={{ mx: 1 , color:"brown" }}
       >
         My Profile
       </MenuItem>
@@ -80,14 +83,14 @@ function MainHeader() {
         onClick={handleMenuClose}
         to="/account"
         component={RouterLink}
-        sx={{ mx: 1 }}
+        sx={{ mx: 1 , color:"brown" }}
       >
         Account Settings
       </MenuItem>
 
       <Divider sx={{ borderStyle: "dashed" }} />
 
-      <MenuItem onClick={handleLogout} sx={{ m: 1 }}>
+      <MenuItem onClick={handleLogout} sx={{ m: 1 , color:"brown" }}>
         Logout
       </MenuItem>
     </Menu>

@@ -19,12 +19,12 @@ function PostList({userId}) {
     if (userId) dispatch(getPosts({ userId, page }));
   }, [dispatch, userId, page]);
   
-//   console.log("posts", posts)
+
 
   return (
     <>
      {posts.map((post) => (
-        <PostCard key={post._id} post={post} />
+        <PostCard key={post._id} post={post} userId={userId} />
       ))}
        <Box sx={{ display: "flex", justifyContent: "center" }}>
       {totalPosts ? (

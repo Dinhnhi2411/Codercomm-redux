@@ -13,8 +13,9 @@ import { Box, Container } from '@mui/system';
 import { Card, Tab, Tabs } from '@mui/material';
 import { capitalCase } from "change-case";
 import ProfileCover from '../features/user/ProfileCover';
-import { styled } from "@mui/material/styles";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";import { styled } from "@mui/material/styles";
 
+import SendFriend from '../features/friend/SendFriend';
 
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   zIndex: 9,
@@ -58,6 +59,12 @@ function HomePage() {
       component: <FriendRequests />,
     },
     {
+      value : "friend waiting",
+      icon:  <EmojiPeopleIcon sx={{ fontSize: 24 }} />,
+      component: <SendFriend/>,
+    },
+
+    {
       value : "add_frend",
       icon: <PersonAddRoundedIcon sx={{ fontSize: 24 }} />,
       component: <AddFriend />,
@@ -75,7 +82,7 @@ function HomePage() {
      }}
      >
 
-      <ProfileCover profole={user} />
+      <ProfileCover profile={user} />
     <TabsWrapperStyle>
     <Tabs
       value={currentTab}

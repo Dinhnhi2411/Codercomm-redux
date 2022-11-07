@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import apiService from "../../app/apiService";
 import { COMMENTS_PER_POST } from "../../app/config";
+import { toast } from "react-toastify";
+
 
 const initialState = {
     isLoading : false,
@@ -48,6 +50,23 @@ const slice = createSlice({
             const { commentId, reactions } = action.payload;
             state.commentsById[commentId].reactions = reactions;
           },
+
+        deleteCommentSuccess(state, action) {
+            state.isLoading = false;
+            state.error = null;
+            const { _id, post } = action.payload;
+            state.commentsByPost[post] = state.commentsByPost[post].filter(
+              (commentId) => commentId !== action.payload._id
+            );
+            delete state.commentsById[_id];
+            state.totalCommentsByPost[post] -= 1;
+          },
+        editCommentSuccess(state, action) {
+            state.isLoading = false;
+            state.error = null;
+            const { _id, content } = action.payload;
+            state.commentsById[_id].content = content;
+          },
     },
 });
 
@@ -66,7 +85,7 @@ export const createComment =
       dispatch(getComments({ postId }));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-    //   toast.error(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -113,7 +132,36 @@ export const createComment =
       );
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-     
+      toast.error(error.message);
     }
   };
 
+  export const deleteComment = (commentId) => async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await apiService.delete(`/comments/${commentId}`);
+      dispatch(slice.actions.deleteCommentSuccess(response.data.data));
+      
+      toast.success("Delete successfully");
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+  
+  export const editComment =
+    ({ commentId, content }) =>
+    async (dispatch) => {
+      dispatch(slice.actions.startLoading());
+      try {
+        const response = await apiService.put(`/comments/${commentId}`, {
+          content,
+        });
+        dispatch(slice.actions.editCommentSuccess(response.data.data));
+       
+        toast.success("Edit successfully");
+      } catch (error) {
+        dispatch(slice.actions.hasError(error.message));
+        toast.error(error.message);
+      }
+    };

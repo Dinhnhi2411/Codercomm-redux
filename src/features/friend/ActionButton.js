@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
   const dispatch = useDispatch();
+  // console.log("targetUserId",targetUserId )
   if (currentUserId === targetUserId) return null;
   const btnSendRequest = (
     

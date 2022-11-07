@@ -9,7 +9,7 @@ import PostList from '../post/PostList';
 
 function Profile({profile}) {
   const {user} = useAuth();
-  console.log("profile", profile)
+
   return (
     <Grid container spacing={3}>
     <Grid item xs={12} md={4}>

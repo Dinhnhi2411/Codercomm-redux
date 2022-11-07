@@ -3,6 +3,7 @@ import { fNumber } from "../../utils/numberFormat";
 
 function ProfileScorecard({ profile }) {
   const { postCount, friendCount } = profile;
+ 
 
   return (
     <Card sx={{ py: 3 }}>

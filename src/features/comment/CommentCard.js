@@ -2,8 +2,16 @@ import React from "react";
 import { Avatar, Box, Paper, Stack, Typography } from "@mui/material";
 import { fDate } from "../../utils/formatTime";
 import CommentReaction from "./CommentReaction"
+import EditDeleteComment from "../comment/EditDeleteComment";
+import { useDispatch } from "react-redux";
+import { deleteComment } from "./commentSlice";
+
 
 function CommentCard({ comment }) {
+  const dispatch = useDispatch();
+  const handleDeleteComment = () => {
+    dispatch(deleteComment(comment._id));
+  };
   return (
     <Stack direction="row" spacing={2}>
       <Avatar alt={comment.author?.name} src={comment.author?.avatarUrl} />
@@ -28,6 +36,10 @@ function CommentCard({ comment }) {
           <CommentReaction comment={comment} />
         </Box>
       </Paper>
+      <EditDeleteComment
+        commentId={comment._id}
+        handleDelete={handleDeleteComment}
+      />
     </Stack>
   );
 }
