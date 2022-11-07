@@ -13,7 +13,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import EditCommentForm from "./EditCommentForm";
 
-function EditDeleteComment({ handleDelete, handleEdit, commentId }) {
+function EditDeleteComment({ handleDelete, commentId }) {
  
   const style = {
     alignItems:"center",

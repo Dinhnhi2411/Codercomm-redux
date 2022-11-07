@@ -7,7 +7,7 @@ import {
     Avatar,
     Typography,
     CardHeader,
-    IconButton,
+    
   } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { fDate } from "../../utils/formatTime";
@@ -19,7 +19,7 @@ import { deletePost } from "./postSlice";
 import EditDeletePost from './EditDeletePost.js';
 
 
-function PostCard({post, userId}) {
+function PostCard({post}) {
 
 const dispatch = useDispatch();
 const handleDeletePost = () => {

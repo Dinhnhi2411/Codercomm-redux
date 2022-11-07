@@ -8,7 +8,7 @@ import CommentCard from './CommentCard';
 
 
 
-function CommentList({ postId, commentId }) {
+function CommentList({ postId }) {
 
     const {
         commentsByPost,
